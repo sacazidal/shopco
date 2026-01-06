@@ -1,0 +1,15 @@
+@if (shouldRenderOverHeader) {
+<div
+  [class]="'over-header ' + (isVisibleOverHeader ? 'over-header--visible' : 'over-header--hidden')"
+  (animationend)="onAnimationEnd($event)"
+>
+  <div class="over-header__container">
+    <p class="over-header__title">
+      Sign up and get 20% off to your first order. <a [routerLink]="['/']">Sign Up Now</a>
+    </p>
+    <button class="over-header--close" type="button" (click)="closeOverHeader()">
+      <img src="/assets/images/close.svg" alt="close" />
+    </button>
+  </div>
+</div>
+}
