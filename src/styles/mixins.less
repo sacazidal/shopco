@@ -1,0 +1,49 @@
+@import 'variables.less';
+
+.rem(@px) {
+  font-size: unit((@px / @base-font-size), rem);
+}
+
+.media(@max-width, @rules) {
+  @media (max-width: @max-width) {
+    @rules();
+  }
+}
+
+.container() {
+  max-width: @xl;
+  margin: 0 auto;
+  padding: 0 5px;
+
+  .media(@lg, {
+    padding: 0 10px;
+  });
+
+  .media(@md, {
+    padding: 0 15px;
+  });
+}
+
+.grid-rows(@columns: 6, @gap: 15px) {
+  display: grid;
+  grid-template-columns: repeat(@columns, 1fr);
+  gap: @gap;
+
+  .media(@xl, {
+    grid-template-columns: repeat(@columns - 1, 1fr);
+  });
+
+  .media(@lg, {
+    grid-template-columns: repeat(@columns - 2, 1fr);
+    gap: @gap - 4px;
+  });
+
+  .media(@md, {
+    grid-template-columns: repeat(@columns - 3, 1fr);
+  });
+
+  .media(@sm, {
+    grid-template-columns: repeat(@columns - 4, 1fr);
+    gap: @gap - 7px;
+  });
+}
