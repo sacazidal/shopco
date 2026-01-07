@@ -28,15 +28,9 @@ export class OverHeaderComponent implements OnInit {
 
     const lastShownDate = dayjs(lastShownDateStr);
 
-    if (dayjs().isBefore(lastShownDate)) {
+    if (dayjs().isAfter(lastShownDate)) {
       this.showBanner();
     }
-
-    console.log(dayjs());
-    console.log(lastShownDate);
-    console.log(dayjs().isAfter(lastShownDate));
-    console.log(this.isVisibleOverHeader);
-    console.log(this.shouldRenderOverHeader);
   }
 
   private showBanner(): void {
