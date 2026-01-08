@@ -1,0 +1,32 @@
+<article class="product">
+  <div class="product__image">
+    <img class="product__image-card" [src]="product.image_urls[0]" [alt]="product.name" />
+  </div>
+  <div class="product__info">
+    <p class="product__name">{{ product.name | titlecase }}</p>
+    <div class="product__rating">
+      <div class="product__rating-stars">
+        <div class="product__rating-background">★★★★★</div>
+        <div class="product__rating-foreground" [style.width.%]="fillPercentage">★★★★★</div>
+      </div>
+      @if (product.review_count > 0) {
+      <p class="product__rating-info">{{ product.review_rating | number : '1.1-1' }}/5</p>
+      }
+    </div>
+    @if (product.price_current !== product.price_original) {
+    <div class="product__price">
+      <p class="product__price-current">
+        {{ product.price_current | priceFormat }}
+      </p>
+      <p class="product__price-original">
+        {{ product.price_original | priceFormat }}
+      </p>
+      <div class="product__price-discount">
+        <p class="product__price-percent">{{ discountPercent }}</p>
+      </div>
+    </div>
+    } @else {
+    <p class="product__price-current">{{ product.price_current | priceFormat }}</p>
+    }
+  </div>
+</article>
