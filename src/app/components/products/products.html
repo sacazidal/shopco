@@ -1,0 +1,11 @@
+<div class="products">
+  <div class="products__grid" [ngStyle]="gridStyle">
+    @if (products$ | async; as products) { @for (product of products; track product.id) {
+    <a [routerLink]="['/products', product.id]">
+      <app-product [product]="product"></app-product>
+    </a>
+    } } @else {
+    <div class="">Loading...</div>
+    }
+  </div>
+</div>
